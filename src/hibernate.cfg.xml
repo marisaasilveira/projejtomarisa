@@ -1,0 +1,32 @@
+<!DOCTYPE hibernate-configuration SYSTEM "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+		<!-- Settings for a local PostgreSQL database. -->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <property name="connection.url">jdbc:postgresql://localhost:5432/marisa</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">postgres</property>
+
+        <!-- Print SQL to stdout, format it nicely  -->
+        <property name="show_sql">false</property> 
+        <property name="format_sql">true</property>
+
+        <!-- Drop and then re-create schema on SessionFactory build, for testing  -->
+        <property name="hbm2ddl.auto">create</property>
+
+	<!-- Use the Hibernate built-in pool for tests. -->
+        <property name="connection.pool_size">3</property>
+		
+	<!--*********** Mapeamento das classes/tabelas ...  ***********-->        
+	<mapping class="modelo.Usuario"/>
+	<mapping class="modelo.Cliente"/>
+	<mapping class="modelo.Projeto"/>
+	<mapping class="modelo.Servico"/>
+	<mapping class="modelo.Funcionario"/>     
+        
+    </session-factory>
+
+</hibernate-configuration>
